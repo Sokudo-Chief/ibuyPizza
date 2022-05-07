@@ -143,7 +143,7 @@ def recordID2(id):
         if sqlite_connection:
             sqlite_connection.close()
 
-# name = "Чизбургер"
-# description = "Две булочки и посередине мясо и салат."
-# insert(name, description)
-# print(SelectTable())
+# name = "Булочка с повидлом"
+# description = "Булочка, внутри повидло."
+# insert2(name, description)
+# print(SelectTable2())

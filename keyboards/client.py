@@ -16,7 +16,7 @@ kb_zakaz_menu = ReplyKeyboardMarkup(resize_keyboard=True)
 kb_zakaz_menu = kb_zakaz_menu.add(button_zakaz_burgeri).add(button_zakaz_bulochki).add(button_general)
 
 kb_general = ReplyKeyboardMarkup(resize_keyboard=True)
-kb_general = kb_general.add(button_menu).add(button_create_zakaz).row(button_add_review, button_reviews).add(button_numbers)
+kb_general = kb_general.add(button_menu).add(button_create_zakaz).row(button_add_review, button_numbers)
 
 kb_menu = ReplyKeyboardMarkup(resize_keyboard=True)
 kb_menu = kb_menu.add(button_burgeri).add(button_bulochki).add(button_general)

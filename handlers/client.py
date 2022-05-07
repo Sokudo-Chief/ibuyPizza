@@ -55,7 +55,7 @@ async def insert_adress(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
         data['Адрес'] = message.text
     await zakaz_bulochki.next()
-    await message.reply("Введите имя")
+    await message.reply("Введите имя и фамилию")
 
 async def insert_name(message: types.Message, state: FSMContext):
     async with state.proxy() as data:
@@ -150,35 +150,26 @@ async def insert_review(message: types.Message, state: FSMContext):
 
 async def select_burgeri(message: types.Message):
     menu = m.SelectTable()
-    answer = ''
 
     try:
         for eda in menu:
             eda = m.recordID(eda[0])
-            
-            answer = answer + 'ID: ' + str(eda[0][0]) + ', ' + eda[0][1] + ': ' + eda[0][2]
-            answer = answer + '\n'
-
+            answer = 'ID: ' + str(eda[0][0]) + ', ' + eda[0][1] + ': ' + eda[0][2]
+            await message.answer(str(answer))
     except IndexError:
         answer = "Ошибка"
-    print(answer)
-    await message.reply(answer)
 
 async def select_bulochki(message: types.Message):
     menu = m.SelectTable2()
-    answer = ''
 
     try:
         for eda in menu:
             eda = m.recordID2(eda[0])
-            
-            answer = answer + 'ID: ' + str(eda[0][0]) + ', ' + eda[0][1] + ': ' + eda[0][2]
-            answer = answer + '\n'
+            answer = 'ID: ' + str(eda[0][0]) + ', ' + eda[0][1] + ': ' + eda[0][2]
+            await message.answer(str(answer))
 
     except IndexError:
         answer = "Ошибка"
-    print(answer)
-    await message.reply(answer)
 
 async def select_reviews(message: types.Message):
     menu = r.SelectTable()
@@ -243,9 +234,6 @@ def register_handlers(dp: Dispatcher):
 
     dp.register_message_handler(select_numbers, commands=['Телефоны'])
     dp.register_message_handler(select_numbers, Text(equals='телефоны', ignore_case=True))
-
-    dp.register_message_handler(select_reviews, commands=['Отзывы'])
-    dp.register_message_handler(select_reviews, Text(equals='отзывы', ignore_case=True))
 
     dp.register_message_handler(upload, commands=['Оставить_отзыв'], state=None)
     dp.register_message_handler(upload, Text(equals='оставить отзыв', ignore_case=True))
